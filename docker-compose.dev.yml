@@ -1,0 +1,21 @@
+version: '3'
+name: dev
+services:
+  backend-service:
+    build:
+      context: ./backend
+      args:
+        NODE_ENV: development
+    container_name: ${COMPOSE_PROJECT_NAME}-${BACKEND_APP_NAME}-backend
+    ports:
+      - "${DEV_BACKEND_PORT}:${DEV_BACKEND_PORT}"
+    env_file:
+      - ./backend/config/.env.development.local
+    environment:
+      - PORT=${DEV_BACKEND_PORT}
+      - NODE_ENV=development
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
+    tty: true

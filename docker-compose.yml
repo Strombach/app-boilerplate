@@ -1,15 +1,5 @@
 version: '3'
-name: boiler-plate
 services:
   backend-service:
-    image: express-boiler-backend
+    image: express-app
     build: ./backend
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-    environment:
-      - PORT=3000
-    # env_file:
-    #   - ./backend/.env
