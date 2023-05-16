@@ -1,8 +1,10 @@
+BACKEND_DIR := ./backend
+BACKEND_CONTAINER_NAME := boiler-app
+
+export BACKEND_CONTAINER_NAME
+
 build:
-	docker build -t express-boiler-app ./backend
+	${MAKE} -C ${BACKEND_DIR} build
 
 run:
-	docker run -v $(CURDIR)/backend:/app -p 3000:3000 -d --name ccblues-backend express-boiler-app
-
-clear:
-	docker rm ccblues-backend -f
+	$(MAKE) -C ${BACKEND_DIR} run
