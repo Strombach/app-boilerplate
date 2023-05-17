@@ -3,9 +3,12 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    const env = process.env.NODE_ENV;
-    res.send(`<h2>Hello From ${env} Docker!</h2>`);
+// Routes
+app.use('/', require('./routes/indexRouter'));
+
+// 404 handler
+app.use((req, res) => {
+    res.status(404).send('<h2>404: Not found</h2>');
 });
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`[server]: Server running on port http://localhost:${port}`));
