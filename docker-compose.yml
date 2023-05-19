@@ -1,5 +1,11 @@
 version: '3'
 services:
   backend-service:
-    image: express-app
-    build: ./backend
+    image: my_express_app
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongo-db:/data/db

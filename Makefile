@@ -4,7 +4,7 @@ build:
 	${DOCKER_COMPOSE} build
 
 dev:
-	${DOCKER_COMPOSE} -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+	${DOCKER_COMPOSE} -f docker-compose.yml -f docker-compose.dev.yml up -d
 
 prod:
 	${DOCKER_COMPOSE} -f docker-compose.yml -f docker-compose.prod.yml up -d --build
